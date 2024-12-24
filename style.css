@@ -1,0 +1,364 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a2a43, #13547a);
+    font-family: 'Arial', sans-serif;
+    color: white;
+    /* Добавляем снежинки */
+    overflow: hidden;
+}
+
+/* Снежинки */
+@keyframes snowfall {
+    0% {
+        transform: translateY(-10vh);
+    }
+
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+.snowflake {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: snowfall linear infinite;
+}
+
+/* Создаем снежинки разных размеров и с разной скоростью */
+.snowflake:nth-child(1) {
+    width: 5px;
+    height: 5px;
+    top: 10%;
+    left: 10%;
+    animation-duration: 10s;
+}
+
+.snowflake:nth-child(2) {
+    width: 8px;
+    height: 8px;
+    top: 50%;
+    left: 30%;
+    animation-duration: 15s;
+}
+
+.snowflake:nth-child(3) {
+    width: 3px;
+    height: 3px;
+    top: 80%;
+    left: 50%;
+    animation-duration: 12s;
+}
+
+.snowflake:nth-child(4) {
+    width: 6px;
+    height: 6px;
+    top: 20%;
+    left: 70%;
+    animation-duration: 8s;
+}
+
+.snowflake:nth-child(5) {
+    width: 4px;
+    height: 4px;
+    top: 60%;
+    left: 90%;
+    animation-duration: 18s;
+}
+
+.snowflake:nth-child(6) {
+    width: 7px;
+    height: 7px;
+    top: 30%;
+    left: 20%;
+    animation-duration: 13s;
+}
+
+.snowflake:nth-child(7) {
+    width: 9px;
+    height: 9px;
+    top: 70%;
+    left: 40%;
+    animation-duration: 9s;
+}
+
+.snowflake:nth-child(8) {
+    width: 2px;
+    height: 2px;
+    top: 40%;
+    left: 60%;
+    animation-duration: 16s;
+}
+
+.snowflake:nth-child(9) {
+    width: 5px;
+    height: 5px;
+    top: 90%;
+    left: 80%;
+    animation-duration: 11s;
+}
+
+.snowflake:nth-child(10) {
+    width: 3px;
+    height: 3px;
+    top: 5%;
+    left: 5%;
+    animation-duration: 14s;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    /* Добавляем эффект стекла */
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    margin-bottom: 30px;
+    color: #ffdb58;
+    text-shadow: 0 0 10px rgba(255, 219, 88, 0.5);
+    font-size: 36px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    /* Новогодний шрифт */
+}
+
+.input-area {
+    margin-bottom: 20px;
+}
+
+label {
+    margin-right: 10px;
+    color: #ffdb58;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    /* Новогодний шрифт */
+}
+
+input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 80px;
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    /* Новогодний шрифт */
+}
+
+.rulet {
+    display: flex;
+    justify-content: center;
+    background: #333;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.reel {
+    position: relative;
+    width: 150px;
+    height: 300px;
+    background: #222;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.reel-container {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    transition: top 2s cubic-bezier(0.1, 0.9, 0.3, 1.0);
+    /* Ускорили анимацию */
+}
+
+.prize-item {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #444;
+    color: white;
+    font-size: 24px;
+    border: 1px solid #555;
+    transition: background-color 0.3s;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    /* Новогодний шрифт */
+}
+
+.prize-item.highlight {
+    background: #ffdb58;
+    color: #222;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 219, 88, 0.7);
+}
+
+.marker {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 2px solid #ff4444;
+    border-bottom: 2px solid #ff4444;
+    pointer-events: none;
+    z-index: 1;
+}
+
+button {
+    margin-top: 20px;
+    padding: 15px 40px;
+    font-size: 18px;
+    background: #ff4444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    /* Новогодний шрифт */
+}
+
+button:hover {
+    background: #cc0000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    background: #666;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.result {
+    margin-top: 20px;
+    color: white;
+    font-size: 24px;
+    min-height: 30px;
+    padding: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    /* Новогодний шрифт */
+}
+
+.result.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 219, 88, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(255, 219, 88, 0.9);
+    }
+
+    100% {
+        box-shadow: 0 0 5px rgba(255, 219, 88, 0.7);
+    }
+}
+
+.prize-item.winner {
+    animation: glow 2s infinite;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .rulet {
+        max-width: 90%;
+    }
+
+    .reel {
+        width: 100%;
+        height: 200px;
+    }
+
+    .prize-item {
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .marker {
+        height: 50px;
+    }
+}
+
+/* Гирлянда */
+.garland-container {
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    display: flex;
+    justify-content: space-around;
+    z-index: 2;
+    pointer-events: none;
+    /* Добавляем это свойство */
+}
+
+.garland-light {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ffdb58;
+    /* Желтый цвет по умолчанию */
+    box-shadow: 0 0 10px #ffdb58;
+    animation: blink 1s infinite;
+}
+
+/* Анимация мигания */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Разные цвета для лампочек */
+.garland-light:nth-child(4n+1) {
+    background-color: #ff4444;
+    box-shadow: 0 0 10px #ff4444;
+}
+
+.garland-light:nth-child(4n+2) {
+    background-color: #4CAF50;
+    box-shadow: 0 0 10px #4CAF50;
+}
+
+.garland-light:nth-child(4n+3) {
+    background-color: #008CBA;
+    box-shadow: 0 0 10px #008CBA;
+}
